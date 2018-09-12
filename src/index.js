@@ -2,6 +2,9 @@ class Sorter {
   constructor() {
     // your implementation
       this.array = [];
+      this.comp = function (a, b) {
+        return a - b;
+      }
   }
 
   add(element) {
@@ -32,20 +35,17 @@ class Sorter {
       for(let i = 0; i <= indices.length - 1; i++) {
         arr.push(this.array[indices[i]]);
       }
-      // console.log("Массив, подлежащий сортировке: " + arr);
-      arr.sort(function (a, b) {
-        return a - b;
-      });
+      arr.sort(this.comp);
       // console.log("Отсортированный масив: " + arr);
       for(let i = 0; i <= indices.length - 1; i++) {
           this.array[indices[i]] = arr[i];
       }
-      // console.log("Результат: " + this.array);
-      // console.log("Размер массива: " + this.array.length);
+      // console.log("Результат сортировки по индексам: " + this.array);
   }
 
   setComparator(compareFunction) {
     // your implementation
+      this.comp = compareFunction;
   }
 }
 
